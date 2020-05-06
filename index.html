@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cloudinary Test</title>
-</head>
-<body>
-  <h1>Cloudinary Test</h1>
-  <p>Hi!</p>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudinary Test</title>
+    <script src="vendor/jquery.min.js"></script>
+    <script src="vendor/jquery.ui.widget.js"></script>
+    <script src="vendor/jquery.iframe-transport.js"></script>
+    <script src="vendor/jquery.fileupload.js"></script>
+    <script src="vendor/cloudinary-jquery-file-upload.js"></script>
+    <script src="js/emily-upload-image.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <h1>Cloudinary Test</h1>
+
+    <div class="form-box">
+      <input  name="file" type="file"
+              class="cloudinary-fileupload"
+              data-cloudinary-field="image_id"
+              data-form-data='{&quot;upload_preset&quot;:&quot;vvqon8nr&quot;,&quot;callback&quot;: &quot;https://www.example.com/cloudinary_cors.html&quot;}'>
+      </input>
+
+      <div class="progress_bar"></div>
+    </div>
+    <div class="preview"></div>
+  </body>
 </html>

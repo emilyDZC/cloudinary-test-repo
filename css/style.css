@@ -1,0 +1,17 @@
+.form-box {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 1em;
+  border: #333 1px solid;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.progress_bar {
+  height: 1em;
+  margin: 12px 0 0;
+  background-color: #349834;
+  width: 0;
+}
+
+/*# sourceMappingURL=style.css.map */
