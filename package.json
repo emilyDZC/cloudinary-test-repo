@@ -1,7 +1,7 @@
 {
   "name": "cloudinary-test-repo",
   "version": "1.0.0",
-  "description": "",
+  "description": "making sense of the cloudinary docs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
