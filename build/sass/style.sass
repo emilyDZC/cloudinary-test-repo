@@ -1,12 +1,38 @@
-.form-box
+body
+  font-family: "Bariol", sans-serif
+
+.hidden
+  display: none
+
+.dropbox
   box-sizing: border-box
-  width: 200px
-  padding: 1em
-  border: charcoal 1px solid
+  min-width: 200px
+  width: 40%
+  padding: 3em
+  border: #555 4px dashed
+  background: #eee
   border-radius: 6px
   margin-bottom: 5px
-.progress_bar
-  height: 1em
-  margin: 12px 0 0
-  background-color: #349834
-  width: 0
+  text-align: center
+  label
+    display: block
+  a
+    display: block
+  input[type="file"]
+    display: none
+  input[type="submit"]
+    margin: 1em 0
+.preview
+  ul
+    list-style: none
+    padding: 0
+  img
+    max-width: 96px
+    height: 96px
+    object-fit: cover
+
+// .progress_bar
+//   height: 1em
+//   margin: 12px 0 0
+//   background-color: #349834
+//   width: 0

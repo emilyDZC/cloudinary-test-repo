@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloudinary Test</title>
-    <script src="vendor/jquery.min.js"></script>
+    <!-- <script src="vendor/jquery.min.js"></script>
     <script src="vendor/jquery.ui.widget.js"></script>
     <script src="vendor/jquery.iframe-transport.js"></script>
     <script src="vendor/jquery.fileupload.js"></script>
-    <script src="vendor/cloudinary-jquery-file-upload.js"></script>
-    <script src="js/emily-upload-image.js"></script>
+    <script src="vendor/cloudinary-jquery-file-upload.js"></script> -->
+    <!-- <script src="js/cloudinary-example-uploader.js"></script> -->
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <h1>Cloudinary Test</h1>
-
-    <div class="form-box">
-      <input  name="file" type="file"
-              class="cloudinary-fileupload"
-              data-cloudinary-field="image_id"
-              data-form-data='{&quot;upload_preset&quot;:&quot;vvqon8nr&quot;,&quot;callback&quot;:&quot;https:&#x2F;&#x2F;emilydzc.github.io&#x2F;cloudinary_js-master&#x2F;html&#x2F;cloudinary_cors.html&quot;}'>
+    <form class="dropbox">
+      <label for="image_uploads">Click or drop images here</label>
+      <!-- <a class="file-browse" href="#">or browse for images...</a> -->
+      <input  id="image_uploads" name="image_uploads" type="file"
+              multiple="multiple">
       </input>
-
-      <div class="progress_bar"></div>
-    </div>
-    <div class="preview"></div>
+      <!-- <div class="progress_bar"></div> -->
+      <div class="preview"></div>
+      <input type="submit" name="submit_images" value="Upload images" class='hidden'>
+    </form>
   </body>
+  <script src="js/multiple-image-upload.js"></script>
 </html>

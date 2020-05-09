@@ -3,8 +3,8 @@ $(function(){
   $.cloudinary.config({ cloud_name: 'dcjayhlgb', secure: true});
 
   $('.cloudinary-fileupload').cloudinary_fileupload({
-      acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i
-    });
+    acceptFileTypes: /(\.|\/)(gif|jpe?g|png|bmp|ico)$/i
+  });
 
   $('.cloudinary-fileupload').bind('cloudinaryprogress', function(e, data) {
     $('.progress_bar').css('width', Math.round((data.loaded * 100.0) / data.total) + '%');
@@ -16,7 +16,7 @@ $(function(){
                              version: data.result.version,
                              crop: 'scale',
                              width: 200 });
-    $('.preview').html(tag.toHtml());
+    $('.preview').append(tag.toHtml());
     return true;
   });
 });
