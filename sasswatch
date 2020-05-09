@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+#relies on Dart sass which still has the --watch flag
+sass --watch build/sass/style.sass:css/style.css

@@ -1,17 +1,43 @@
-.form-box {
-  box-sizing: border-box;
-  width: 200px;
-  padding: 1em;
-  border: #333 1px solid;
-  border-radius: 6px;
-  margin-bottom: 5px;
+body {
+  font-family: "Bariol", sans-serif;
 }
 
-.progress_bar {
-  height: 1em;
-  margin: 12px 0 0;
-  background-color: #349834;
-  width: 0;
+.hidden {
+  display: none;
+}
+
+.dropbox {
+  box-sizing: border-box;
+  min-width: 200px;
+  width: 40%;
+  padding: 3em;
+  border: #555 4px dashed;
+  background: #eee;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.dropbox label {
+  display: block;
+}
+.dropbox a {
+  display: block;
+}
+.dropbox input[type=file] {
+  display: none;
+}
+.dropbox input[type=submit] {
+  margin: 1em 0;
+}
+
+.preview ul {
+  list-style: none;
+  padding: 0;
+}
+.preview img {
+  max-width: 96px;
+  height: 96px;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=style.css.map */
