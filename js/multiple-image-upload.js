@@ -6,7 +6,7 @@
   const dropbox = document.querySelector('.dropbox');
   const preview = document.querySelector('.preview');
   const submit = document.querySelector('input[name="submit_images"]');
-  var files;
+  let files;
 
   dropbox.addEventListener("dragenter", dragenter, false);
   dropbox.addEventListener("dragover", dragover, false);
@@ -27,7 +27,7 @@
     e.stopPropagation();
     e.preventDefault();
 
-    var dt = e.dataTransfer;
+    let dt = e.dataTransfer;
     input.files = dt.files;
 
     updateImageDisplay();
@@ -47,15 +47,20 @@
       const list = document.createElement('ul');
       preview.appendChild(list);
 
-      for(const file of curFiles) {
+      let index = 0;
+      for(let file of curFiles) {
         const listItem = document.createElement('li');
+        listItem.id = `id_${index}`;
+        index++;
         const para = document.createElement('p');
         if(validFileType(file)) {
           para.textContent = `File name ${file.name}, file size ${returnFileSize(file.size)}.`;
           const image = document.createElement('img');
           image.src = URL.createObjectURL(file);
-
           listItem.appendChild(image);
+          const bar = document.createElement('div');
+          bar.className = "progress-bar";
+          listItem.appendChild(bar);
           listItem.appendChild(para);
         } else {
           para.textContent = `File name ${file.name}: Not a valid file type. Update your selection.`;
@@ -72,45 +77,34 @@
 
   function upload_files_to_cloudinary(e){
     e.preventDefault();
-    for (var i = 0; i < files.length; i++) {
-      uploadFile(files[i]); // call the function to upload the file
+    for (let i = 0; i < files.length; i++) {
+      uploadFile(files[i], i); // call the function to upload the file
     }
   }
 
-  function uploadFile(file) {
-    var url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
-    var xhr = new XMLHttpRequest();
-    var fd = new FormData();
+  function uploadFile(file, index) {
+    const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
+    let xhr = new XMLHttpRequest();
+    let fd = new FormData();
     xhr.open('POST', url, true);
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
-    // Reset the upload progress bar
-     // document.getElementById('progress').style.width = 0;
-
     // Update progress (can be used to show progress indicator)
-    // xhr.upload.addEventListener("progress", function(e) {
-    //   var progress = Math.round((e.loaded * 100.0) / e.total);
-    //   document.getElementById('progress').style.width = progress + "%";
-    //
-    //   console.log(`fileuploadprogress data.loaded: ${e.loaded},
-    // data.total: ${e.total}`);
-    // });
+    xhr.upload.addEventListener("progress", function(e) {
+      var progress = Math.round((e.loaded * 100.0) / e.total);
+      document.querySelector(`#id_${index} .progress-bar`).style.width = progress + "%";
+    });
 
     xhr.onreadystatechange = function(e) {
       if (xhr.readyState == 4 && xhr.status == 200) {
         // File uploaded successfully
-        var response = JSON.parse(xhr.responseText);
-        // https://res.cloudinary.com/cloudName/image/upload/v1483481128/public_id.jpg
-        var url = response.secure_url;
-        // Create a thumbnail of the uploaded image, with 150px width
-        // var tokens = url.split('/');
-        // tokens.splice(-2, 0, 'w_150,c_scale');
-        // var img = new Image(); // HTML5 Constructor
-        // img.src = tokens.join('/');
-        // img.alt = response.public_id;
-        // document.getElementById('gallery').appendChild(img);
-        const message = "Success!";
-        preview.appendChild(document.createTextNode(message));
+        // let response = JSON.parse(xhr.responseText);
+        // let url = response.secure_url;
+        if (index == files.length - 1) {
+          const success = document.createElement('div');
+          success.className = "tick";
+          dropbox.appendChild(success);
+        }
       }
     };
 
